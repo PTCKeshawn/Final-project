@@ -14,10 +14,34 @@ main_menu(){
 	6) exit "
 
 	read -p ":" choice
-	game
+	check_choice
 }
 
-game(){
-	for loop in 
+check_choice(){
+	case choice in
+		1) game_to_1
+			;;
+		2) game_to_3
+			;;
+		3) game_to_5
+			;;			
+		4) read -p "first to : " choice 
+			echo "game is first to $choice"
+			game_runner
+			;;
+		5) free_play
+			;;
+		6) exit
+			;;
+	
+	esac
 }
-main_menu
+
+#game_runner(){
+#	for (( i = 0; i <= choice ; i++ )); do
+#		game
+#	done
+#	echo "sddsgj"
+#}
+
+	main_menu
