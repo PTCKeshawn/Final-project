@@ -7,13 +7,12 @@ ai_score=0
 echo "Welcome to Rock paper scissors frenzy!"
 
 main_menu(){
-	clear
 	sleep 1
 	echo -e "would you like to play: 
 	1) best of 1
 	2) best of 3
 	3) best of 5
-	4) custom play (you pick what its up to)
+	4) custom play (you pick what its best of)
 	5) freeplay
 	6) exit "
 
@@ -44,8 +43,8 @@ first to $choice"
 sleep 1
 			game_runner
 			;;
-		4) read -p "first to : " choice 
-			echo "game is first to $choice"
+		4) read -p "best of : " choice 
+			echo "game is best of $choice"
 			game_runner
 			;;
 		5) freeplay_runner="1"
@@ -58,7 +57,6 @@ sleep 1
 }
 
 game_runner(){
-	sleep 1
 	for (( i = 1; i <= choice ; i++ )); do
 		game
 	done
@@ -71,7 +69,7 @@ game_runner(){
 }
 
 tie_checker(){
-	if [[ $your_score == $ai_score ]]; then
+	if [[ $your_score == $ai_score && $your_score -gt 0 && $ai_score -gt 0 ]]; then
 			echo "tiebreaker!"
 			choice=1
 			game
@@ -108,90 +106,130 @@ game(){
 			echo -e "
 			you picked rock
 			I picked scissors"
-			sleep 1
-			echo "You win!"
+			echo -e "
+			You win!"
 			((your_score++))
-			echo -e "your score = $your_score
-ai score = $ai_score"
+			echo -e "
+			your score = $your_score
+			ai score = $ai_score
+			"
 			sleep 1
 		elif [[ ( $selection == "r" || $selection == "R" ) && $ai_item == "rock" ]]; then
-			echo -e "you picked rock
+			echo -e "
+			you picked rock
 			I picked rock"
-			echo "Tie!"
-			echo -e "your score = $your_score
-ai score = $ai_score"
+			echo -e "
+			Tie!"
+			echo -e "
+			your score = $your_score
+			ai score = $ai_score
+			"
 			sleep 1
 			game
 		elif [[ ( $selection == "r" || $selection == "R" ) && $ai_item == "paper" ]]; then
-			echo -e "you picked rock
+			echo -e "
+			you picked rock
 			I picked paper"
-			echo "you lose"
+			echo -e "
+			you lose"
 			((ai_score++))
-			echo -e "your score = $your_score
-ai score = $ai_score"
+			echo -e "
+			your score = $your_score
+			ai score = $ai_score
+			"
 			sleep 1
 #paper selection outcomes
 
 		elif [[ ( $selection == "p" || $selection == "P" ) && $ai_item == "scissors" ]]; then
-			echo -e "you picked paper
-I picked scissors"
-			sleep 1
-			echo "You lose"
+			echo -e "
+			you picked paper
+			I picked scissors"
+			echo -e "
+			You lose"
 			((ai_score++))
-			echo -e "your score = $your_score
-ai score = $ai_score"
+			echo -e "
+			your score = $your_score
+			ai score = $ai_score
+			"
 			sleep 1
 		elif [[ ( $selection == "p" || $selection == "P" ) && $ai_item == "rock" ]]; then
-			echo -e "you picked paper
-I picked rock"
-			echo "You win!"
+			echo -e "
+			you picked paper
+			I picked rock"
+			echo -e "
+			You win!"
 			((your_score++))
-			echo -e "your score = $your_score
-ai score = $ai_score"
+			echo -e "
+			your score = $your_score
+			ai score = $ai_score
+			"
 			sleep 1
 		elif [[ ( $selection == "p" || $selection == "P" ) && $ai_item == "paper" ]]; then
-			echo -e "you picked paper
-I picked paper"
-			echo "tie!"
-			echo -e "your score = $your_score
-ai score = $ai_score"
+			echo -e "
+			you picked paper
+			I picked paper"
+			echo -e "
+			tie!"
+			echo -e "
+			your score = $your_score
+			ai score = $ai_score
+			"
 			sleep 1
 			game
 #scissors selection outcomes
 
 		elif [[ ( $selection == "s" || $selection == "S" ) && $ai_item == "scissors" ]]; then
-			echo -e "you picked scissors
-I picked scissors"
-			sleep 1
-			echo "Tie!"
-			echo -e "your score = $your_score
-ai score = $ai_score"
+			echo -e "
+			you picked scissors
+			I picked scissors"
+			echo -e "
+			Tie!"
+			echo -e "
+			your score = $your_score
+			ai score = $ai_score
+			"
 			sleep 1
 			game
 		elif [[ ( $selection == "s" || $selection == "S" ) && $ai_item == "rock" ]]; then
-			echo -e "you picked scissors
-I picked rock"
-			echo "You lose"
+			echo -e "
+			you picked scissors
+			I picked rock"
+			echo -e "
+			You lose"
 			((ai_score++))
-			echo -e "your score = $your_score
-ai score = $ai_score"
+			echo -e "
+			your score = $your_score
+			ai score = $ai_score
+			"
 			sleep 1
-		elif [[ ( $selection == "r" || $selection == "R" ) && $ai_item == "paper" ]]; then
-			echo -e "you picked scissors
-I picked paper"
-			echo "you win!"
+		elif [[ ( $selection == "s" || $selection == "S" ) && $ai_item == "paper" ]]; then
+			echo -e "
+			you picked scissors
+			I picked paper"
+			echo -e "
+			you win!"
 			((your_score++))
-			echo -e "your score = $your_score
-ai score = $ai_score"
+			echo -e "
+			your score = $your_score
+			ai score = $ai_score
+			"
 			sleep 1
 
 			#exit outcome
 
 		elif [[ $selection == "e" || $selection == "E" ]]; then
-			echo "Going back to main menu"
+			echo -e "
+			Going back to main menu"
 			freeplay_runner=0
-			sleep 1
+			sleep 1 
+			clear
 			main_menu
+
+		#if user types any other letter or number
+	else
+		echo "ivalid. try again."
+		sleep 1 
+		game
 		fi
 
 }
