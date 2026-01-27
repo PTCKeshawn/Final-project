@@ -23,10 +23,10 @@ main_menu(){
 check_choice(){
 	case $choice in
 		1) choice=1
-		echo -e "
-great!
-first to $choice"
-sleep 1
+			echo -e "
+			great!
+			first to $choice"
+			sleep 1
 			game_runner
 			;;
 		2) choice=3
@@ -235,3 +235,4 @@ game(){
 }
 
 	main_menu
+	#due for changes
