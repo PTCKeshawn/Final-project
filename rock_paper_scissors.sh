@@ -6,9 +6,8 @@ your_score=0
 ai_score=0
 
 echo "Welcome to Rock paper scissors frenzy!"
-
+sleep 1
 main_menu(){
-	sleep 1
 	echo -e "would you like to play: 
 	1) best of 1
 	2) best of 3
@@ -247,7 +246,7 @@ game(){
 			echo -e "
 			Going back to main menu"
 			freeplay_runner=0
-			sleep 1 
+			sleep 1
 			clear
 			main_menu
 
