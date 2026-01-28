@@ -1,6 +1,7 @@
 #!/bin/bash
 clear
 options=(rock scissors paper)
+game_values=(1 3 5 0)
 your_score=0
 ai_score=0
 
@@ -20,38 +21,46 @@ main_menu(){
 	check_choice
 }
 
-check_choice(){
-	case $choice in
-		1) choice=1
-			echo -e "
+choice_message(){
+	echo -e "
 			great!
-			first to $choice"
+			best of $choice"
 			sleep 1
 			game_runner
+}
+error_choice_message(){
+		echo -e "
+			invalid choice.
+			best of $choice"
+			sleep 1
+			game_runner
+}
+
+check_choice(){
+	case $choice in
+		1) 	choice=1
+			choice_message
 			;;
 		2) choice=3
-		echo -e "
-great!
-first to $choice"
-sleep 1
-			game_runner
+			choice_message
 			;;						
 		3) choice=5
-		echo -e "
-great!
-first to $choice"
-sleep 1
-			game_runner
+			choice_message
 			;;
 		4) read -p "best of : " choice 
-			echo "game is best of $choice"
-			game_runner
+			choice_message
 			;;
 		5) freeplay_runner="1"
 			free_play
 			;;
-		6) exit
+		6) 	echo "exiting..."
+			sleep 1
+			exit
 			;;
+		*) choice=3
+			error_choice_message
+
+
 	
 	esac
 }
