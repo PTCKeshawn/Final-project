@@ -22,6 +22,7 @@ main_menu(){
 }
 
 choice_message(){
+	if [[ $choice ]]
 	echo -e "
 			great!
 			best of $choice"
@@ -38,13 +39,13 @@ error_choice_message(){
 
 check_choice(){
 	case $choice in
-		1) 	choice=1
+		1) 	choice=$(printf "%s\n" "${game_values[0]}")
 			choice_message
 			;;
-		2) choice=3
+		2) choice=$(printf "%s\n" "${game_values[1]}")
 			choice_message
 			;;						
-		3) choice=5
+		3) choice=$(printf "%s\n" "${game_values[2]}")
 			choice_message
 			;;
 		4) read -p "best of : " choice 
@@ -96,7 +97,7 @@ ai score = $ai_score"
 			game
 		fi
 	fi
-		sleep 3
+		sleep 1
 }
 
 free_play(){
