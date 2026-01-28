@@ -147,7 +147,6 @@ game(){
 			your score = $your_score
 			ai score = $ai_score
 			"
-			sleep 1
 		elif [[ ( $selection == "r" || $selection == "R" ) && $ai_item == "rock" ]]; then
 			echo -e "
 			you picked rock
@@ -158,7 +157,7 @@ game(){
 			your score = $your_score
 			ai score = $ai_score
 			"
-			sleep 1
+
 			game
 		elif [[ ( $selection == "r" || $selection == "R" ) && $ai_item == "paper" ]]; then
 			echo -e "
@@ -171,7 +170,6 @@ game(){
 			your score = $your_score
 			ai score = $ai_score
 			"
-			sleep 1
 #paper selection outcomes
 
 		elif [[ ( $selection == "p" || $selection == "P" ) && $ai_item == "scissors" ]]; then
@@ -185,7 +183,6 @@ game(){
 			your score = $your_score
 			ai score = $ai_score
 			"
-			sleep 1
 		elif [[ ( $selection == "p" || $selection == "P" ) && $ai_item == "rock" ]]; then
 			echo -e "
 			you picked paper
@@ -197,7 +194,6 @@ game(){
 			your score = $your_score
 			ai score = $ai_score
 			"
-			sleep 1
 		elif [[ ( $selection == "p" || $selection == "P" ) && $ai_item == "paper" ]]; then
 			echo -e "
 			you picked paper
@@ -208,7 +204,6 @@ game(){
 			your score = $your_score
 			ai score = $ai_score
 			"
-			sleep 1
 			game
 #scissors selection outcomes
 
@@ -222,7 +217,6 @@ game(){
 			your score = $your_score
 			ai score = $ai_score
 			"
-			sleep 1
 			game
 		elif [[ ( $selection == "s" || $selection == "S" ) && $ai_item == "rock" ]]; then
 			echo -e "
@@ -235,7 +229,6 @@ game(){
 			your score = $your_score
 			ai score = $ai_score
 			"
-			sleep 1
 		elif [[ ( $selection == "s" || $selection == "S" ) && $ai_item == "paper" ]]; then
 			echo -e "
 			you picked scissors
@@ -247,7 +240,6 @@ game(){
 			your score = $your_score
 			ai score = $ai_score
 			"
-			sleep 1
 
 			#exit outcome
 
