@@ -21,13 +21,33 @@ main_menu(){
 	check_choice
 }
 
-choice_message(){
-	if [[ $choice ]]
-	echo -e "
-			great!
-			best of $choice"
+custom_play(){
+	while true; do 
+		read -p "best of : " choice 
+		if [[ $choice =~ ^-?[0-9]+$ ]]; then
+		echo -e "
+				great!
+				best of $choice"
+				sleep 1
+				game_runner
+		else
+			echo "invalid choice. try again"
 			sleep 1
-			game_runner
+		fi
+	done	
+}
+
+choice_message(){
+	if [[ $choice =~ ^-?[0-9]+$ ]]; then
+		echo -e "
+				great!
+				best of $choice"
+				sleep 1
+				game_runner
+		else
+			echo "invalid choice. try again"
+			sleep 1
+		fi
 }
 error_choice_message(){
 		echo -e "
@@ -36,6 +56,7 @@ error_choice_message(){
 			sleep 1
 			game_runner
 }
+
 
 check_choice(){
 	case $choice in
@@ -48,8 +69,7 @@ check_choice(){
 		3) choice=$(printf "%s\n" "${game_values[2]}")
 			choice_message
 			;;
-		4) read -p "best of : " choice 
-			choice_message
+		4)	custom_play
 			;;
 		5) freeplay_runner="1"
 			free_play
@@ -75,7 +95,6 @@ game_runner(){
 	your_score=0
 	ai_score=0
 	main_menu
-	echo "sddsgj"
 }
 
 tie_checker(){
@@ -101,6 +120,7 @@ ai score = $ai_score"
 }
 
 free_play(){
+
 	while [[ $freeplay_runner -eq 1 ]]; do
 		game
 	done
