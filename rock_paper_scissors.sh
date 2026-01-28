@@ -69,7 +69,7 @@ check_choice(){
 		3) choice=$(printf "%s\n" "${game_values[2]}")
 			choice_message
 			;;
-		4)	custom_play
+		4)custom_play
 			;;
 		5) freeplay_runner="1"
 			free_play
@@ -104,12 +104,16 @@ tie_checker(){
 			game
 			if [[ $your_score -gt $ai_score ]]; then
 				echo "you win!"
-				echo -e "your score = $your_score
-ai score = $ai_score"
+				echo -e "
+				your score = $your_score
+				ai score = $ai_score"
+				sleep 1
 			elif [[ $your_score -lt $ai_score ]]; then
 				echo " you lose "
-				echo -e "your score = $your_score
-ai score = $ai_score"
+				echo -e "
+				your score = $your_score
+				ai score = $ai_score"
+				sleep 1
 			elif [[ $your_score == $ai_score ]]; then
 			echo "tiebreaker!"
 			choice=1
@@ -120,11 +124,11 @@ ai score = $ai_score"
 }
 
 free_play(){
-
 	while [[ $freeplay_runner -eq 1 ]]; do
 		game
 	done
 }
+
 game(){
 	echo 'To exit at any time, type "e" or "E" to go back to main menu' 
 	read -p "pick between rock (r), paper (p), scissors (s) : " selection
@@ -265,4 +269,3 @@ game(){
 }
 
 	main_menu
-	#due for changes
